@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AppsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @app = apps(:one)
+    @app = App.create!(name:'Neco')
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class AppsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create app" do
     assert_difference('App.count') do
-      post apps_url, params: { app: { comment: @app.comment, name: @app.name, number: @app.number } }
+      post apps_url, params: { app: { name:'Neco' } }
     end
 
     assert_redirected_to app_url(App.last)
@@ -34,7 +34,7 @@ class AppsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update app" do
-    patch app_url(@app), params: { app: { comment: @app.comment, name: @app.name, number: @app.number } }
+    patch app_url(@app), params: { app: { name:'Neco' } }
     assert_redirected_to app_url(@app)
   end
 
