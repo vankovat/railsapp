@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class AppsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @app = App.create!(name:'Neco')
+    @my_app = App.create!(name:'Neco')
+    pass = 'super_secret_pass'
+    sign_in User.create!(email: 'me@example.com', password: pass, password_confirmation: pass)
   end
 
   test "should get index" do
@@ -24,23 +28,23 @@ class AppsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show app" do
-    get app_url(@app)
+    get app_url(@my_app)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_app_url(@app)
+    get edit_app_url(@my_app)
     assert_response :success
   end
 
   test "should update app" do
-    patch app_url(@app), params: { app: { name:'Neco' } }
-    assert_redirected_to app_url(@app)
+    patch app_url(@my_app), params: { app: { name:'Neco' } }
+    assert_redirected_to app_url(@my_app)
   end
 
   test "should destroy app" do
     assert_difference('App.count', -1) do
-      delete app_url(@app)
+      delete app_url(@my_app)
     end
 
     assert_redirected_to apps_url
