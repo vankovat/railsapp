@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag(@building.picture_url, width: '100%') if @building.picture.present? %>
+  </div>
+
+  <div class="col-md-3">
+    <p><b>Name: </b><%= @building.name %></p>
+    <p><b>Description: </b><%= @building.description %></p>
+    <p>
+      <%= link_to 'Edit', edit_building_path(@building) %> |
+      <%= link_to 'Destroy', @building, data: { confirm: 'Are you sure?' }, method: :delete %> |
+      <%= link_to 'Back', building_path %>
+    </p>
+  </div>
+</div>

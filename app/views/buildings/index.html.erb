@@ -1,0 +1,13 @@
+<h1>Listing buildings</h1>
+
+<% @buildings.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |building| %>
+      <div class="col-md-4">
+        <%= image_tag building.picture_url, width: '100%' if building.picture.present? %>
+        <h4><%= link_to building.name, building %></h4>
+        <%= building.description %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -16,4 +16,4 @@
 //= require_tree .
 //= require materialize-sprockets
 
-alert('Hello world!');
+alert('Hello builder!');

@@ -9,6 +9,9 @@ gem 'rails', '~> 5.2.3'
 group :development do
   gem 'sqlite3', "1.3.13"
 end
+
+gem 'carrierwave'
+
 group :production do
   gem 'pg'
 end
